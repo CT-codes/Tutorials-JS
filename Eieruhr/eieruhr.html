@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #253035;
+            color: #828055;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .preselect {
+            width: 48px;
+            height: 50px;
+            font-size: 2rem;
+            font-weight: 500;
+            border-radius: 5px;
+            background-color: #828055;
+        }
+
+        .field {
+            width: 200px;
+            font-size: 3rem;
+        }
+
+        .timer {
+            height: 90px;
+            font-size: 5rem;
+        }
+
+        .start {
+            width: 200px;
+            font-size: 2rem;
+            font-weight: 500;
+            padding: 5px 30px;
+            border-radius: 5px;
+            background-color: #828055;
+
+        }
+    </style>
+
+    <script>
+        let alarm = new Audio('alarm.mp3');
+        let timerStarted = false;
+
+
+        function startTimer() {
+            if (!timerStarted) {
+                let selectedTime = document.querySelector("#time").value;
+
+                let startTime = new Date().getTime();
+                let calcTime = 1000 * 60 * selectedTime;
+                let endTime = startTime + calcTime;
+
+
+                setInterval(function () {
+                    let timeLeft = endTime - new Date().getTime();
+
+                    if (timeLeft > 0) {
+                        let minutes = timeLeft / (1000 * 60);
+                        minutes = Math.floor(minutes);
+                        let seconds = (timeLeft / 1000) % 60;
+                        seconds = Math.round(seconds);
+                        seconds = ('0' + seconds).slice(-2);
+                        let text = minutes + ' : ' + seconds;
+                        timer.innerHTML = text;
+                    } else {
+                        alarm.play();
+                        timer.innerHTML = '0 : 00';
+                    }
+                }, 1000);
+                timerStarted = true;
+
+                document.querySelector("#time").value = ' ';
+            }
+        }
+
+        function seven() {
+            if (!timerStarted) {
+                let startTime = new Date().getTime();
+                let calcTime = 1000 * 60 * 7;
+                let endTime = startTime + calcTime;
+
+
+                setInterval(function () {
+                    let timeLeft = endTime - new Date().getTime();
+
+                    if (timeLeft > 0) {
+                        let minutes = timeLeft / (1000 * 60);
+                        minutes = Math.floor(minutes);
+                        let seconds = (timeLeft / 1000) % 60;
+                        seconds = Math.round(seconds);
+                        seconds = ('0' + seconds).slice(-2);
+                        let text = minutes + ' : ' + seconds;
+                        timer.innerHTML = text;
+                    } else {
+                        alarm.play();
+                        timer.innerHTML = '0 : 00';
+                    }
+                }, 1000);
+                timerStarted = true;
+
+            }
+        }
+
+        function fifteen() {
+            if (!timerStarted) {
+                let startTime = new Date().getTime();
+                let calcTime = 1000 * 60 * 15;
+                let endTime = startTime + calcTime;
+
+
+                setInterval(function () {
+                    let timeLeft = endTime - new Date().getTime();
+
+                    if (timeLeft > 0) {
+                        let minutes = timeLeft / (1000 * 60);
+                        minutes = Math.floor(minutes);
+                        let seconds = (timeLeft / 1000) % 60;
+                        seconds = Math.round(seconds);
+                        seconds = ('0' + seconds).slice(-2);
+                        let text = minutes + ' : ' + seconds;
+                        timer.innerHTML = text;
+                    } else {
+                        alarm.play();
+                        timer.innerHTML = '0 : 00';
+                    }
+                }, 1000);
+                timerStarted = true;
+
+            }
+        }
+
+        function thirty() {
+            if (!timerStarted) {
+                let startTime = new Date().getTime();
+                let calcTime = 1000 * 60 * 30;
+                let endTime = startTime + calcTime;
+
+
+                setInterval(function () {
+                    let timeLeft = endTime - new Date().getTime();
+
+                    if (timeLeft > 0) {
+                        let minutes = timeLeft / (1000 * 60);
+                        minutes = Math.floor(minutes);
+                        let seconds = (timeLeft / 1000) % 60;
+                        seconds = Math.round(seconds);
+                        seconds = ('0' + seconds).slice(-2);
+                        let text = minutes + ' : ' + seconds;
+                        timer.innerHTML = text;
+                    } else {
+                        alarm.play();
+                        timer.innerHTML = '0 : 00';
+                    }
+                }, 1000);
+                timerStarted = true;
+
+            }
+        }
+
+        function sixty() {
+            if (!timerStarted) {
+                let startTime = new Date().getTime();
+                let calcTime = 1000 * 60 * 60;
+                let endTime = startTime + calcTime;
+
+
+                setInterval(function () {
+                    let timeLeft = endTime - new Date().getTime();
+
+                    if (timeLeft > 0) {
+                        let minutes = timeLeft / (1000 * 60);
+                        minutes = Math.floor(minutes);
+                        let seconds = (timeLeft / 1000) % 60;
+                        seconds = Math.round(seconds);
+                        seconds = ('0' + seconds).slice(-2);
+                        let text = minutes + ' : ' + seconds;
+                        timer.innerHTML = text;
+                    } else {
+                        alarm.play();
+                        timer.innerHTML = '0 : 00';
+                    }
+                }, 1000);
+                timerStarted = true;
+
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <img class="egg" src="boiled_egg.svg" alt="das ist ein Ei" width="200px)">
+
+
+    <section>
+        <button class="preselect" id="seven" onclick="seven()">7</button>
+        <button class="preselect" id="fifteen" onclick="fifteen()">15</button>
+        <button class="preselect" id="thirty" onclick="thirty()">30</button>
+        <button class="preselect" id="sixty" onclick="sixty()">60</button>
+    </section>
+
+    <label for="time">
+        <input type="number" class="field" id="time">
+    </label>
+
+    <output for="time" class="timer" id="timer">
+
+    </output>
+
+    <button class="start" onclick="startTimer()">Starten</button>
+    <br>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #253035;
+        }
+
+        table {
+            width: 100%;
+            height: 70vh;
+            background-color: #253035;
+            color: #828055;
+            border-spacing: 10px;
+            padding: 15px;
+        }
+
+        td {
+            width: 25%;
+            border: solid 1px;
+            text-align: center;
+            border-radius: 25px;
+            font-size: 3rem;
+        }
+
+        td:hover,
+        td:active {
+            background-color: #363520;
+            cursor: pointer;
+        }
+
+        #resultArea {
+            height: 30vh;
+            background-color: #828055;
+            display: flex;
+            justify-content: flex-end;
+            align-items: end;
+            font-size: 4rem;
+            padding: 10px 30px;
+            word-break: break-all;
+        }
+    </style>
+
+
+    <script>
+        function appendOperation(operation) {
+            document.getElementById('resultArea').innerHTML += operation;
+        }
+
+        function calculateResult() {
+            let container = document.getElementById('resultArea');
+            let result = eval(container.innerHTML);
+            container.innerHTML = result;
+        }
+
+        function deleteLast() {
+            let container = document.getElementById("resultArea");
+            if (container.innerHTML.endsWith(' ')) {
+                container.innerHTML = container.innerHTML.slice(0, -3);
+            } else {
+                container.innerHTML = container.innerHTML.slice(0, -1);
+            }
+        }
+
+        function deleteAll() {
+            document.getElementById("resultArea").innerHTML = '';
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div id="resultArea">
+
+    </div>
+
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td onclick="deleteAll()">C</td>
+            <td onclick="deleteLast()">del</td>
+        </tr>
+        <tr>
+            <td onclick="appendOperation(7)">7</td>
+            <td onclick="appendOperation(8)">8</td>
+            <td onclick="appendOperation(9)">9</td>
+            <td onclick="appendOperation(' / ')">/</td>
+        </tr>
+        <tr>
+            <td onclick="appendOperation(4)">4</td>
+            <td onclick="appendOperation(5)">5</td>
+            <td onclick="appendOperation(6)">6</td>
+            <td onclick="appendOperation(' * ')">*</td>
+        </tr>
+        <tr>
+            <td onclick="appendOperation(1)">1</td>
+            <td onclick="appendOperation(2)">2</td>
+            <td onclick="appendOperation(3)">3</td>
+            <td onclick="appendOperation(' + ')">+</td>
+        </tr>
+        <tr>
+            <td onclick="appendOperation(0)">0</td>
+            <td onclick="appendOperation('.')">,</td>
+            <td onclick="calculateResult('=')">=</td>
+            <td onclick="appendOperation(' - ')">-</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
